@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorar - Frank Record's</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=League+Gothic&display=swap');
+
+        :root {
+            --color-crema: #F4EFE6;
+            --color-rojo-oscuro: #5C100E; 
+            --color-rojo-claro: #C22D28;
+            --color-texto-oscuro: #1A1A1A;
+            --color-blanco: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-crema);
+            color: var(--color-texto-oscuro);
+            overflow-x: hidden; 
+        }
+
+        /* --- HEADER --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background-color: var(--color-crema);
+            border-bottom: 2px solid #ddd;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            min-width: max-content;
+        }
+
+        .logo-icon { width: 55px; height: auto; object-fit: contain; }
+        .logo-text-img { height: 45px; width: auto; object-fit: contain; }
+
+        nav {
+            flex: 1;
+            margin-left: 60px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-family: 'League Gothic', sans-serif;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+            position: relative;
+            padding-bottom: 2px;
+            transition: color 0.3s ease;
+        }
+
+        /* Secuencia estricta de colores: 1. Negro, 2. Rojo, 3. Negro, 4. Rojo */
+        nav ul li:nth-child(1) a { color: var(--color-texto-oscuro); }
+        nav ul li:nth-child(2) a { color: var(--color-rojo-claro); }
+        nav ul li:nth-child(3) a { color: var(--color-texto-oscuro); }
+        nav ul li:nth-child(4) a { color: var(--color-rojo-claro); }
+
+        /* Línea inferior elegante únicamente al pasar el cursor (hover) */
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li:nth-child(odd) a::after {
+            background-color: var(--color-rojo-claro);
+        }
+
+        nav ul li:nth-child(even) a::after {
+            background-color: var(--color-texto-oscuro);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--color-rojo-claro);
+        }
+
+        nav ul li:nth-child(even) a:hover {
+            color: var(--color-rojo-claro);
+        }
+
+        /* --- HERO DE EXPLORAR --- */
+        .explore-hero {
+            background-color: var(--color-rojo-oscuro);
+            padding: 30px 60px 40px 60px;
+            color: var(--color-blanco);
+        }
+
+        .back-link {
+            color: var(--color-blanco);
+            text-decoration: none;
+            font-family: 'League Gothic', sans-serif;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        .explore-hero h1 {
+            font-family: 'League Gothic', sans-serif;
+            font-size: 60px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+
+        /* --- CONTENEDOR DE LA CUADRÍCULA --- */
+        .explore-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 40px;
+        }
+
+        .albums-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px 50px;
+        }
+
+        /* --- TARJETAS DE ÁLBUM CON VINILO CSS --- */
+        .album-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .album-card {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .album-artwork-container {
+            position: relative;
+            width: 250px;
+            height: 250px;
+        }
+
+        .album-cover {
+            width: 250px;
+            height: 250px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 8px 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .album-disc {
+            position: absolute;
+            width: 240px;
+            height: 240px;
+            background-color: #111;
+            border-radius: 50%;
+            top: 5px;
+            right: -60px;
+            z-index: 1;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.4);
+            background-image: repeating-radial-gradient(#111, #111 3px, #222 4px, #111 6px);
+            transition: right 0.4s ease;
+        }
+
+        .album-card-link:hover .album-disc {
+            right: -95px; /* Efecto de salida del vinilo */
+        }
+
+        .album-info h3 {
+            font-family: 'League Gothic', sans-serif;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+            line-height: 1.1;
+        }
+
+        .album-info p {
+            font-family: 'Agency FB', sans-serif;
+            font-size: 18px;
+            text-transform: uppercase;
+            color: #555;
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+    <a href="frank-records.html" class="logo-container" style="text-decoration: none; display: flex; align-items: center; gap: 15px;">
+        <img src="LOGOS/FRANK RECORDS PNG.png" alt="Logo" class="logo-icon">
+        <img src="LOGOS/FRANK RECORDS LARGE PNG.png" alt="Texto Logo" class="logo-text-img">
+    </a>
+    <nav>
+        <ul>
+            <li><a href="coleccion.html">Colección</a></li>
+            <li><a href="nuevos-lanzamientos.html">Nuevos Lanzamientos</a></li>
+            <li><a href="explorar.html">Explorar</a></li>
+            <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <!-- HERO DE EXPLORAR -->
+    <section class="explore-hero">
+        <a href="javascript:history.back()" class="back-link">&larr; ATRAS</a>
+        <h1>Explorar</h1>
+    </section>
+
+    <!-- CONTENIDO DE ÁLBUMES -->
+    <section class="explore-container">
+        <div class="albums-grid">
+            
+            <!-- Álbum 1 -->
+            <a href="ego-death.html" class="album-card-link">
+                <div class="album-card">
+                    <div class="album-artwork-container">
+                        <div class="album-disc"></div>
+                        <div class="album-cover" style="background: url('img/eda.jpeg') center/cover;"></div>
+                    </div>
+                    <div class="album-info">
+                        <h3>Ego Death at a Bachelorette Party</h3>
+                        <p>Hayley Williams</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Álbum 2 -->
+            <a href="amar-te-duele.html" class="album-card-link">
+                <div class="album-card">
+                    <div class="album-artwork-container">
+                        <div class="album-disc"></div>
+                        <div class="album-cover" style="background: url('img/atd.jpeg') center/cover;"></div>
+                    </div>
+                    <div class="album-info">
+                        <h3>Amar Te Duele (Versiones de Ximena)</h3>
+                        <p>Ximena Sariñana</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Álbum 3 -->
+            <a href="hurry-up-tomorrow.html" class="album-card-link">
+                <div class="album-card">
+                    <div class="album-artwork-container">
+                        <div class="album-disc"></div>
+                        <div class="album-cover" style="background: url('img/hut.jpeg') center/cover;"></div>
+                    </div>
+                    <div class="album-info">
+                        <h3>Hurry Up Tomorrow</h3>
+                        <p>The Weeknd</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Álbum 4 -->
+            <a href="willoughby-tucker.html" class="album-card-link">
+                <div class="album-card">
+                    <div class="album-artwork-container">
+                        <div class="album-disc"></div>
+                        <div class="album-cover" style="background: url('img/wt.jpeg') center/cover;"></div>
+                    </div>
+                    <div class="album-info">
+                        <h3>Willoughby Tucker I'll Always Love You</h3>
+                        <p>Ethel Cain</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Álbum 5 -->
+            <a href="everybody-scream.html" class="album-card-link">
+                <div class="album-card">
+                    <div class="album-artwork-container">
+                        <div class="album-disc"></div>
+                        <div class="album-cover" style="background: url('img/es.jpeg') center/cover;"></div>
+                    </div>
+                    <div class="album-info">
+                        <h3>Everybody Scream</h3>
+                        <p>Florence + The Machine</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Álbum 6 -->
+            <a href="this-is-why.html" class="album-card-link">
+                <div class="album-card">
+                    <div class="album-artwork-container">
+                        <div class="album-disc"></div>
+                        <div class="album-cover" style="background: url('img/tsw.jpeg') center/cover;"></div>
+                    </div>
+                    <div class="album-info">
+                        <h3>This Is Why</h3>
+                        <p>Paramore</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Álbum 7 -->
+            <a href="club-8.html" class="album-card-link">
+                <div class="album-card">
+                    <div class="album-artwork-container">
+                        <div class="album-disc"></div>
+                        <div class="album-cover" style="background: url('img/c8.jpeg') center/cover;"></div>
+                    </div>
+                    <div class="album-info">
+                        <h3>Club 8</h3>
+                        <p>Club 8</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Álbum 8 -->
+            <a href="imaginal-disk.html" class="album-card-link">
+                <div class="album-card">
+                    <div class="album-artwork-container">
+                        <div class="album-disc"></div>
+                        <div class="album-cover" style="background: url('img/id.jpeg') center/cover;"></div>
+                    </div>
+                    <div class="album-info">
+                        <h3>Imaginal Disk</h3>
+                        <p>Magdalena Bay</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Álbum 9 -->
+            <a href="the-mountain.html" class="album-card-link">
+                <div class="album-card">
+                    <div class="album-artwork-container">
+                        <div class="album-disc"></div>
+                        <div class="album-cover" style="background: url('img/tm.jpeg') center/cover;"></div>
+                    </div>
+                    <div class="album-info">
+                        <h3>The Mountain</h3>
+                        <p>Gorillaz</p>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+</body>
+</html>

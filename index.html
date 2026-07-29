@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frank Record's - Inicio</title>
+    <style>
+        /* Importar fuentes de Google Fonts (League Gothic y Inter) */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=League+Gothic&display=swap');
+
+        :root {
+            --color-crema: #F4EFE6;
+            --color-rojo-oscuro: #8B1E19;
+            --color-rojo-claro: #C22D28;
+            --color-texto-oscuro: #1A1A1A;
+            --color-blanco: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-crema);
+            color: var(--color-texto-oscuro);
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background-color: var(--color-crema);
+            border-bottom: 2px solid #ddd;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            min-width: max-content;
+        }
+
+        .logo-icon {
+            width: 55px; 
+            height: auto;
+            object-fit: contain;
+        }
+
+        .logo-text-img {
+            height: 45px; 
+            width: auto;
+            object-fit: contain;
+        }
+
+        nav {
+            flex: 1;
+            margin-left: 60px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-family: 'League Gothic', sans-serif;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+            position: relative;
+            padding-bottom: 2px;
+            transition: color 0.3s ease;
+        }
+
+        /* Secuencia estricta de colores: 1. Negro, 2. Rojo, 3. Negro, 4. Rojo */
+        nav ul li:nth-child(1) a { color: var(--color-texto-oscuro); }
+        nav ul li:nth-child(2) a { color: var(--color-rojo-claro); }
+        nav ul li:nth-child(3) a { color: var(--color-texto-oscuro); }
+        nav ul li:nth-child(4) a { color: var(--color-rojo-claro); }
+
+        /* Línea inferior elegante únicamente al pasar el cursor (hover) */
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li:nth-child(odd) a::after {
+            background-color: var(--color-rojo-claro);
+        }
+
+        nav ul li:nth-child(even) a::after {
+            background-color: var(--color-texto-oscuro);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--color-rojo-claro);
+        }
+
+        nav ul li:nth-child(even) a:hover {
+            color: var(--color-rojo-claro);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(135deg, #3A0D0B 0%, #7A1713 50%, #4D100E 100%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 60px;
+            min-height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            flex: 1;
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-rojo-claro);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-family: 'League Gothic', sans-serif;
+            font-size: 80px;
+            color: var(--color-blanco);
+            line-height: 0.9;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            max-width: 500px;
+            font-weight: 400;
+        }
+
+        .hero-title::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 6px;
+            background-color: var(--color-rojo-claro);
+            margin-top: 10px;
+        }
+
+        .hero-text {
+            font-family: 'Inter', sans-serif;
+            color: #d1c8c8;
+            font-size: 14px;
+            line-height: 1.5;
+            max-width: 350px;
+        }
+
+        .hero-graphics {
+            flex: 1.5;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 40px;
+            z-index: 2;
+        }
+
+        /* Tocadiscos central con el PNG integrado */
+        .turntable-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            background: #111;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            border: 8px solid #C22D28;
+            background-image: repeating-radial-gradient(#111, #111 4px, #222 6px, #111 8px);
+        }
+
+        .turntable-center-logo {
+            width: 280px;
+            height: auto;
+            object-fit: contain;
+            z-index: 2;
+            position: relative;
+            filter: drop-shadow(2px 2px 8px rgba(0,0,0,0.5));
+        }
+
+        .hero-vinyl-img {
+            width: 380px;
+            height: auto;
+            object-fit: contain;
+            transform: rotate(3deg);
+            filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.4));
+        }
+
+        /* --- NUEVOS LANZAMIENTOS --- */
+        .releases-section {
+            padding: 60px;
+        }
+
+        .section-title {
+            font-family: 'League Gothic', sans-serif;
+            font-size: 36px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--color-texto-oscuro);
+            display: inline-block;
+            padding-bottom: 5px;
+            letter-spacing: 1px;
+            font-weight: 400;
+        }
+
+        .releases-grid {
+            display: flex;
+            gap: 100px;
+            overflow-x: auto;
+            padding: 10px 10px 30px 10px;
+        }
+
+        .album-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .album-card {
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .album-artwork-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        .album-cover {
+            width: 200px;
+            height: 200px;
+            background-color: #ccc;
+            position: relative;
+            z-index: 2;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Efecto de desplazamiento del vinilo al pasar el cursor */
+        .album-disc {
+            width: 180px;
+            height: 180px;
+            background-color: #111;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            right: -40px; 
+            z-index: 1;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            background-image: repeating-radial-gradient(#111, #111 4px, #222 5px, #111 6px);
+            transition: right 0.4s ease;
+        }
+
+        .album-card-link:hover .album-disc {
+            right: -75px;
+        }
+
+        .album-info h3 {
+            font-family: 'League Gothic', sans-serif;
+            font-size: 24px;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+            letter-spacing: 0.5px;
+            font-weight: 400;
+        }
+
+        .album-info p {
+            font-family: 'Agency FB', sans-serif;
+            font-size: 18px;
+            color: #555;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="frank-records.html" class="logo-container" style="text-decoration: none; display: flex; align-items: center; gap: 15px;">
+            <img src="LOGOS/FRANK RECORDS PNG.png" alt="Logo" class="logo-icon">
+            <img src="LOGOS/FRANK RECORDS LARGE PNG.png" alt="Texto Logo" class="logo-text-img">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="coleccion.html">Colección</a></li>
+                <li><a href="nuevos-lanzamientos.html">Nuevos Lanzamientos</a></li>
+                <li><a href="explorar.html">Explorar</a></li>
+                <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle">Vinilos Auténticos, Historias Reales</p>
+            <h2 class="hero-title">Música que se queda contigo.</h2>
+            <p class="hero-text">
+                Seleccionamos vinilos con alma.<br>
+                Clásicos atemporales y nuevos tesoros<br>
+                para quienes viven la música en físico.
+            </p>
+        </div>
+        
+        <div class="hero-graphics">
+            <!-- Tocadiscos central con el PNG FRANK RECORDS PNGG.png -->
+            <div class="turntable-container">
+                <img src="LOGOS/FRANK RECORDS PNGG.png" alt="Frank Records Tocadiscos" class="turntable-center-logo">
+            </div>
+            
+            <img src="img/wtvy.webp" alt="Vinilo principal" class="hero-vinyl-img">
+        </div>
+    </section>
+    
+    <section class="releases-section">
+        <h2 class="section-title">Nuevos Lanzamientos</h2>
+        
+        <div class="releases-grid">
+            <!-- Álbum 1 -->
+            <a href="ego-death.html" class="album-card-link">
+                <div class="album-card">
+                    <div class="album-artwork-container">
+                        <div class="album-disc"></div>
+                        <div class="album-cover" style="background: url('img/eda.jpeg') center/cover;"></div> 
+                    </div>
+                    <div class="album-info">
+                        <h3>Ego Death at a Bachelorette Party</h3>
+                        <p>Hayley Williams</p>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Álbum 2 -->
+            <a href="everybody-scream.html" class="album-card-link">
+                <div class="album-card">
+                    <div class="album-artwork-container">
+                        <div class="album-disc"></div>
+                        <div class="album-cover" style="background: url('img/es.jpeg') center/cover;"></div>
+                    </div>
+                    <div class="album-info">
+                        <h3>Everybody Scream</h3>
+                        <p>Florence + The Machine</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Álbum 3 -->
+            <a href="club-8.html" class="album-card-link">
+                <div class="album-card">
+                    <div class="album-artwork-container">
+                        <div class="album-disc"></div>
+                        <div class="album-cover" style="background: url('img/c8.jpeg') center/cover;"></div>
+                    </div>
+                    <div class="album-info">
+                        <h3>Club 8</h3>
+                        <p>Club 8</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Álbum 4 -->
+            <a href="this-is-why.html" class="album-card-link">
+                <div class="album-card">
+                    <div class="album-artwork-container">
+                        <div class="album-disc"></div>
+                        <div class="album-cover" style="background: url('img/tsw.jpeg') center/cover;"></div>
+                    </div>
+                    <div class="album-info">
+                        <h3>This Is Why</h3>
+                        <p>Paramore</p>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Álbum 5 -->
+            <a href="the-mountain.html" class="album-card-link">
+                <div class="album-card">
+                    <div class="album-artwork-container">
+                        <div class="album-disc"></div>
+                        <div class="album-cover" style="background: url('img/tm.jpeg') center/cover;"></div>
+                    </div>
+                    <div class="album-info">
+                        <h3>The Mount</h3>
+                        <p>Gorillaz</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Álbum 6 -->
+            <a href="imaginal-disk.html" class="album-card-link">
+                <div class="album-card">
+                    <div class="album-artwork-container">
+                        <div class="album-disc"></div>
+                        <div class="album-cover" style="background: url('img/id.jpeg') center/cover;"></div>
+                    </div>
+                    <div class="album-info">
+                        <h3>Imaginal Disk</h3>
+                        <p>Magdalena Bay</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Álbum 7 -->
+            <a href="hurry-up-tomorrow.html" class="album-card-link">
+                <div class="album-card">
+                    <div class="album-artwork-container">
+                        <div class="album-disc"></div>
+                        <div class="album-cover" style="background: url('img/hut.jpeg') center/cover;"></div>
+                    </div>
+                    <div class="album-info">
+                        <h3>Hurry Up Tomorrow</h3>
+                        <p>The Weeknd</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Álbum 8 -->
+            <a href="amar-te-duele.html" class="album-card-link">
+                <div class="album-card">
+                    <div class="album-artwork-container">
+                        <div class="album-disc"></div>
+                        <div class="album-cover" style="background: url('img/atd.jpeg') center/cover;"></div>
+                    </div>
+                    <div class="album-info">
+                        <h3>Amar Te Duele</h3>
+                        <p>Ximena Sariñana</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Álbum 9 -->
+            <a href="willoughby-tucker.html" class="album-card-link">
+                <div class="album-card">
+                    <div class="album-artwork-container">
+                        <div class="album-disc"></div>
+                        <div class="album-cover" style="background: url('img/wt.jpeg') center/cover;"></div>
+                    </div>
+                    <div class="album-info">
+                        <h3>Willoughby Tucker</h3>
+                        <p>Ethel Cain</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+</body>
+</html>

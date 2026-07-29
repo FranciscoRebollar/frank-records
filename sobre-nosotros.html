@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros - Frank Record's</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=League+Gothic&display=swap');
+
+        :root {
+            --color-crema: #F4EFE6;
+            --color-rojo-oscuro: #5C100E; 
+            --color-rojo-claro: #C22D28;
+            --color-texto-oscuro: #1A1A1A;
+            --color-blanco: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-crema);
+            color: var(--color-texto-oscuro);
+            overflow-x: hidden; 
+        }
+
+        /* --- HEADER --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background-color: var(--color-crema);
+            border-bottom: 2px solid #ddd;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            min-width: max-content;
+        }
+
+        .logo-icon { width: 55px; height: auto; object-fit: contain; }
+        .logo-text-img { height: 45px; width: auto; object-fit: contain; }
+
+        nav {
+            flex: 1;
+            margin-left: 60px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-family: 'League Gothic', sans-serif;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+            position: relative;
+            padding-bottom: 2px;
+            transition: color 0.3s ease;
+        }
+
+        /* Secuencia estricta de colores: 1. Negro, 2. Rojo, 3. Negro, 4. Rojo */
+        nav ul li:nth-child(1) a { color: var(--color-texto-oscuro); }
+        nav ul li:nth-child(2) a { color: var(--color-rojo-claro); }
+        nav ul li:nth-child(3) a { color: var(--color-texto-oscuro); }
+        nav ul li:nth-child(4) a { color: var(--color-rojo-claro); }
+
+        /* Línea inferior elegante únicamente al pasar el cursor (hover) */
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li:nth-child(odd) a::after {
+            background-color: var(--color-rojo-claro);
+        }
+
+        nav ul li:nth-child(even) a::after {
+            background-color: var(--color-texto-oscuro);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--color-rojo-claro);
+        }
+
+        nav ul li:nth-child(even) a:hover {
+            color: var(--color-rojo-claro);
+        }
+
+        /* --- HERO DE SOBRE NOSOTROS --- */
+        .about-hero {
+            background-color: var(--color-rojo-oscuro);
+            padding: 30px 60px 40px 60px;
+            color: var(--color-blanco);
+        }
+
+        .back-link {
+            color: var(--color-blanco);
+            text-decoration: none;
+            font-family: 'League Gothic', sans-serif;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        .about-hero h1 {
+            font-family: 'League Gothic', sans-serif;
+            font-size: 60px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+
+        /* --- SECCIÓN DE TRES COLUMNAS --- */
+        .about-grid-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .about-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .column-title {
+            font-family: 'League Gothic', sans-serif;
+            font-size: 36px;
+            text-transform: uppercase;
+            color: var(--color-texto-oscuro);
+            border-bottom: 2px solid var(--color-texto-oscuro);
+            padding-bottom: 5px;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .about-column p {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #222;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+    <a href="frank-records.html" class="logo-container" style="text-decoration: none; display: flex; align-items: center; gap: 15px;">
+        <img src="LOGOS/FRANK RECORDS PNG.png" alt="Logo" class="logo-icon">
+        <img src="LOGOS/FRANK RECORDS LARGE PNG.png" alt="Texto Logo" class="logo-text-img">
+    </a>
+    <nav>
+        <ul>
+            <li><a href="coleccion.html">Colección</a></li>
+            <li><a href="nuevos-lanzamientos.html">Nuevos Lanzamientos</a></li>
+            <li><a href="explorar.html">Explorar</a></li>
+            <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <!-- HERO DE SOBRE NOSOTROS -->
+    <section class="about-hero">
+        <a href="javascript:history.back()" class="back-link">&larr; ATRAS</a>
+        <h1>Sobre Nosotros</h1>
+    </section>
+
+    <!-- CONTENIDO DE TRES COLUMNAS -->
+    <section class="about-grid-container">
+        
+        <!-- Columna 1: Nuestra Filosofía -->
+        <div class="about-column">
+            <h2 class="column-title">Nuestra Filosofía</h2>
+            <p>
+                Creemos que la música en físico no es solo un sonido, sino un objeto de arte y una conexión personal. Nuestra misión es preservar y celebrar la experiencia táctil y auditiva del vinilo, seleccionando discos con alma para quienes viven la música al máximo.
+            </p>
+        </div>
+
+        <!-- Columna 2: Nuestro Equipo -->
+        <div class="about-column">
+            <h2 class="column-title">Nuestro Equipo</h2>
+            <p>
+                Somos un grupo de melómanos dedicados a buscar las joyas musicales más raras y los prensajes de la más alta fidelidad. Nos encargamos de todo el proceso, desde la curaduría hasta el empaque, asegurando que cada vinilo llegue a tus manos listo para ofrecerte una experiencia auditiva impecable.
+            </p>
+        </div>
+
+        <!-- Columna 3: Nuestro Compromiso -->
+        <div class="about-column">
+            <h2 class="column-title">Nuestro Compromiso</h2>
+            <p style="margin-bottom: 15px;"><strong>Sostenibilidad:</strong> Embalaje ecológico y seguro para proteger tus discos sin dañar el planeta.</p>
+            <p style="margin-bottom: 15px;"><strong>Calidad Curada:</strong> Cada pieza e impresión es inspeccionada a detalle antes de llegar a tus manos.</p>
+            <p><strong>Comunidad:</strong> Apoyamos activamente la escena independiente y a los artistas locales.</p>
+        </div>
+
+    </section>
+
+</body>
+</html>

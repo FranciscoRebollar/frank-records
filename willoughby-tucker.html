@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Willoughby Tucker - Frank Record's</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=League+Gothic&display=swap');
+
+        :root {
+            --color-crema: #F4EFE6;
+            --color-rojo-oscuro: #5C100E; 
+            --color-rojo-claro: #C22D28;
+            --color-texto-oscuro: #1A1A1A;
+            --color-blanco: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-crema);
+            color: var(--color-texto-oscuro);
+            overflow-x: hidden; 
+        }
+
+        /* --- HEADER --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background-color: var(--color-crema);
+            border-bottom: 2px solid #ddd;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            min-width: max-content;
+        }
+
+        .logo-icon { width: 55px; height: auto; object-fit: contain; }
+        .logo-text-img { height: 45px; width: auto; object-fit: contain; }
+
+        nav {
+            flex: 1;
+            margin-left: 60px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-family: 'League Gothic', sans-serif;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+            position: relative;
+            padding-bottom: 2px;
+            transition: color 0.3s ease;
+        }
+
+        /* Secuencia estricta de colores: 1. Negro, 2. Rojo, 3. Negro, 4. Rojo */
+        nav ul li:nth-child(1) a { color: var(--color-texto-oscuro); }
+        nav ul li:nth-child(2) a { color: var(--color-rojo-claro); }
+        nav ul li:nth-child(3) a { color: var(--color-texto-oscuro); }
+        nav ul li:nth-child(4) a { color: var(--color-rojo-claro); }
+
+        /* Línea inferior elegante únicamente al pasar el cursor (hover) */
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li:nth-child(odd) a::after {
+            background-color: var(--color-rojo-claro);
+        }
+
+        nav ul li:nth-child(even) a::after {
+            background-color: var(--color-texto-oscuro);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--color-rojo-claro);
+        }
+
+        nav ul li:nth-child(even) a:hover {
+            color: var(--color-rojo-claro);
+        }
+
+        /* --- PRODUCT HERO SECTION --- */
+        .product-hero {
+            background-color: var(--color-rojo-oscuro);
+            padding: 40px 60px 40px 60px; 
+            color: var(--color-blanco);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: visible; 
+        }
+
+        .back-link {
+            color: var(--color-blanco);
+            text-decoration: none;
+            font-family: 'League Gothic', sans-serif;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 40px;
+        }
+
+        .product-display-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+        }
+
+        .album-visuals {
+            position: relative;
+            width: 480px;
+            height: 480px;
+            margin-bottom: -130px; 
+            z-index: 10;
+        }
+
+        .album-visuals .cover {
+            width: 460px;
+            height: 460px;
+            background-color: #ccc;
+            position: relative;
+            z-index: 2;
+            box-shadow: 15px 15px 40px rgba(0,0,0,0.6);
+        }
+
+        .album-visuals .vinyl-record-css {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background-color: #111;
+            border-radius: 50%;
+            top: 5px;
+            right: -100px; 
+            z-index: 1;
+            box-shadow: 5px 5px 20px rgba(0,0,0,0.6);
+            background-image: repeating-radial-gradient(#111, #111 4px, #222 6px, #111 8px);
+        }
+
+        .product-info-text {
+            flex: 1;
+            padding-left: 180px; 
+        }
+
+        .product-info-text h1 {
+            font-family: 'League Gothic', sans-serif;
+            font-size: 60px;
+            line-height: 0.9;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .product-info-text h2 {
+            font-family: 'Agency FB', sans-serif;
+            font-size: 28px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            font-weight: 600;
+            color: #E0E0E0;
+        }
+
+        .product-price {
+            font-family: 'League Gothic', sans-serif;
+            font-size: 36px;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .btn-inspect {
+            background-color: var(--color-rojo-claro);
+            color: var(--color-blanco);
+            border: none;
+            padding: 12px 30px;
+            font-family: 'League Gothic', sans-serif;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-inspect:hover {
+            background-color: #a3221e;
+        }
+
+        /* --- TRES COLUMNAS DE DETALLES --- */
+        .details-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+            padding: 120px 60px 80px 60px; 
+            max-width: 1200px;
+            margin: 0 auto;
+            font-family: 'Agency FB', sans-serif; 
+        }
+
+        .detail-column {
+            flex: 1;
+        }
+
+        .column-title {
+            font-family: 'League Gothic', sans-serif;
+            font-size: 36px;
+            text-transform: uppercase;
+            font-weight: 400;
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ccc;
+            color: var(--color-texto-oscuro);
+            letter-spacing: 1px;
+        }
+
+        .detail-column p {
+            font-size: 20px;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .detail-column strong {
+            font-weight: 600;
+        }
+
+        .tracklist-col .column-title {
+            color: var(--color-rojo-claro);
+            border-bottom-color: #e6b8b7;
+        }
+
+        .tracklist-continuous {
+            list-style-position: inside;
+            color: var(--color-rojo-oscuro);
+            font-size: 20px;
+            line-height: 1.4;
+        }
+
+        .tracklist-continuous li {
+            margin-bottom: 5px;
+        }
+
+        /* --- MODAL (VENTANITA DE INSPECCIÓN) --- */
+        .modal-overlay {
+            display: none; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); 
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(2px);
+        }
+
+        .modal-content {
+            background-color: var(--color-crema);
+            width: 85%;
+            max-width: 1100px;
+            padding: 30px 40px 60px 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.6);
+            position: relative;
+        }
+
+        .modal-close-btn {
+            background: none;
+            border: none;
+            color: var(--color-rojo-claro);
+            font-family: 'League Gothic', sans-serif;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            margin-bottom: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .modal-images-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            overflow-x: auto; 
+            padding-bottom: 20px; 
+        }
+
+        .modal-images-container img {
+            max-height: 400px;
+            width: auto;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+            object-fit: contain;
+            flex-shrink: 0; 
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+    <a href="frank-records.html" class="logo-container" style="text-decoration: none; display: flex; align-items: center; gap: 15px;">
+        <img src="LOGOS/FRANK RECORDS PNG.png" alt="Logo" class="logo-icon">
+        <img src="LOGOS/FRANK RECORDS LARGE PNG.png" alt="Texto Logo" class="logo-text-img">
+    </a>
+    <nav>
+        <ul>
+            <li><a href="coleccion.html">Colección</a></li>
+            <li><a href="nuevos-lanzamientos.html">Nuevos Lanzamientos</a></li>
+            <li><a href="explorar.html">Explorar</a></li>
+            <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <!-- PRODUCT HERO -->
+    <section class="product-hero">
+        <a href="javascript:history.back()" class="back-link">&larr; ATRAS</a>
+        
+        <div class="product-display-container">
+            <div class="album-visuals">
+                <div class="vinyl-record-css"></div>
+                <div class="cover" style="background: url('img/wt.jpeg') center/cover;"></div>
+            </div>
+            
+            <div class="product-info-text">
+                <h1>WILLOUGHBY TUCKER I'LL<br>ALWAYS LOVE YOU</h1>
+                <h2>ETHEL CAIN</h2>
+                <div class="product-price">$799.99 MXN</div>
+                <button id="abrir-modal" class="btn-inspect">INSPECCIONAR</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- DETALLES, TRACKLIST Y DESCRIPCION -->
+    <section class="details-grid">
+        
+        <!-- Columna 1 -->
+        <div class="detail-column">
+            <h3 class="column-title">Detalles del Producto</h3>
+            <p><strong>Sello:</strong> Daughters of Cain Records.</p>
+            <p><strong>Año:</strong> 2025.</p>
+            <p><strong>Formato:</strong> Doble LP de 12" (180g Audiophile Press).</p>
+            <p><strong>Velocidad:</strong> 33 ⅓ RPM.</p>
+        </div>
+
+        <!-- Columna 2 -->
+        <div class="detail-column tracklist-col">
+            <h3 class="column-title">Tracklist</h3>
+            <ol class="tracklist-continuous">
+                <li>Janie</li>
+                <li>Willoughby's Theme</li>
+                <li>FK Me Eyes</li>
+                <li>Nettles</li>
+                <li>Willoughby's Interlude</li>
+                <li>Dust Bowl</li>
+                <li>A Knock at the Door</li>
+                <li>Radio Towers</li>
+                <li>Tempest</li>
+                <li>Waco, Texas</li>
+            </ol>
+        </div>
+
+        <!-- Columna 3 -->
+        <div class="detail-column">
+            <h3 class="column-title">Descripcion</h3>
+            <p>
+                Willoughby Tucker, I'll Always Love You es el aclamado segundo álbum de estudio de Ethel Cain. Funcionando como una precuela de su celebrado debut, el disco profundiza en una densa odisea de folk ambiental, rock gótico sureño y oscuras baladas pop que relatan la trágica historia de su primer amor. Esta cuidada edición doble en vinilo de alta fidelidad captura de forma impecable la inmensa reverberación, la cruda instrumentación analógica y la desgarradora atmósfera sonora que definen la obra.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- VENTANITA MODAL (Oculta por defecto) -->
+    <div id="ventana-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="cerrar-modal" class="modal-close-btn">&larr; ATRAS</button>
+            
+            <div class="modal-images-container">
+                <img src="ins/wt1.jpg" alt="Vinilo con funda">
+                <img src="ins/wt2.webp" alt="Vinilo completo">
+                <img src="ins/wt3.jpg" alt="Lomo del disco">
+                <img src="ins/wt4.jpg" alt="Lomo del disco">
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE FUNCIONAMIENTO DEL BOTÓN -->
+    <script>
+        const btnAbrir = document.getElementById('abrir-modal');
+        const modal = document.getElementById('ventana-modal');
+        const btnCerrar = document.getElementById('cerrar-modal');
+
+        // Abrir ventana
+        btnAbrir.addEventListener('click', () => {
+            modal.style.display = 'flex';
+        });
+
+        // Cerrar con botón
+        btnCerrar.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Cerrar dando clic afuera de la caja
+        window.addEventListener('click', (evento) => {
+            if (evento.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
